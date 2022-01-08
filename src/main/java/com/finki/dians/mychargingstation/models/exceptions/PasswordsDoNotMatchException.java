@@ -1,0 +1,9 @@
+package com.finki.dians.mychargingstation.models.exceptions;
+
+public class PasswordsDoNotMatchException extends RuntimeException{
+
+    public PasswordsDoNotMatchException(){
+        super("Passwords do not match.");
+    }
+
+}

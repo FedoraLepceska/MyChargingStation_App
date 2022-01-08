@@ -1,0 +1,62 @@
+<div id="log-in">
+    <header id="header" className="ex-2-header">
+        <div className="container">
+            <div className="row">
+                <div className="col-lg-12">
+                    <h1>Log In</h1>
+                    <p>You don't have an account?
+                        <span className="nav-item">
+                                 <Link to="sign-up" spy={true} smooth={true} offset={50} duration={500} className="nav-link page-scroll" href="./sign-up">{contentLogin.Signup}</Link>
+                            </span>
+                    </p>
+                    <div className="form-container">
+                        <form onSubmit={(e) => login(e)} id="logInForm" data-toggle="validator" data-focus="false">
+                        <div className="form-group">
+
+                            <input
+                                    onChange={(e) => onChangeLogin(e)}
+                            id="username"
+                            value={Login_User.username}
+                            placeholder="email"
+                            type="email"
+                            className="form-control-input"
+                            required>
+                            </input>
+
+                            <div className="help-block with-errors"></div>
+                        </div>
+
+                        <div className="form-group">
+
+                            <input
+                                    onChange={(e) => onChangeLogin(e)}
+                            id="password"
+                            value={Login_User.password}
+                            placeholder="password"
+                            type="password"
+                            className="form-control-input"
+                            required>
+                            </input>
+
+                            <div className="help-block with-errors"></div>
+                        </div>
+
+                        <div className="form-group">
+
+                            <button
+                                    type="submit"
+                                    className="form-control-submit-button">
+                                LOG IN
+                            </button>
+
+                        </div>
+                        <div className="form-message">
+                            <div id="lmsgSubmit" className="h3 text-center hidden"></div>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+</div>
