@@ -1,0 +1,108 @@
+<th:block>
+    <header th:replace="fragments/header"></header>
+
+    <div id="reserve">
+        <header id="header" class="header">
+            <div class="header-content">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6 col-xl-5">
+                            <div class="text-container">
+                                <h1>Reserve now!</h1>
+                                <form th:method="POST" th:action="@{/home/reserve}">
+                                    <label for="station">Choose charging station:</label>&nbsp;
+                                    <select name="location_id" id="station" class="paddings">
+                                        <th:block th:each="location : ${locations}">
+                                            <option th:value="${location.getLocation_id()}"
+                                                    th:text="${location.getAddress()}"></option>
+                                        </th:block>
+                                    </select><br/><br/>
+
+                                    <label for="charger">Charging type:</label>&nbsp;
+                                    <input id="charger" type="text" readonly><br/><br/>
+
+                                    <label for="carPlate">Car:</label>&nbsp;
+                                    <select name="car_id" id="carPlate" class="paddings">
+                                        <th:block th:each="car : ${cars}">
+                                            <option name="car_plate" th:value="${car.getCar_id()}"
+                                                    th:text="${car.toString()}"></option>
+                                        </th:block>
+                                    </select><br/><br/>
+
+                                    <label for="datetime">Date and Time:</label>&nbsp;
+                                    <input type="datetime-local" id="datetime" name="date_time" th:value="(${reservation} != null ? ${reservation.getDate_time()} : ' ')"/>
+
+                                    <input type="submit" value="Reserve" class="btn-solid-lg "/>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-xl-7">
+                            <div class="image-container">
+                                <div class="img-wrapper">
+                                    <iframe id="map"
+                                            src="https://www.google.com/maps/d/u/0/embed?mid=118jEnaKYJUGKEKZNdYGQ0w0BKv3WlcHf&ehbc=2E312F"
+                                            width="640" height="480"></iframe>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+    </div>
+
+
+    <!--    My reservations-->
+
+    <div id="myReservations">
+        <header id="headerMyReservations" class="header">
+            <div class="header-content">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6 col-xl-5">
+                            <div class="text-container">
+                                <h1>My Reservations</h1>
+
+                                <table class="table">
+                                    <tr>
+                                        <th>Location</th>
+                                        <th>Car Model</th>
+                                        <th>Date and Time</th>
+                                        <th>Status</th>
+                                        <th></th>
+                                    </tr>
+                                    <th:block th:each="reservation: ${reservations}">
+                                        <tr>
+                                            <th:block th:each="location: ${locations}">
+                                                <td th:if="${reservation.getLocation_id() == location.getLocation_id()}" th:text="${location.getAddress()}"></td>
+                                            </th:block>
+
+                                            <th:block th:each="car: ${cars}">
+                                                <td th:if="${reservation.getCar_id() == car.getCar_id()}" th:text="${car.toString()}"></td>
+                                            </th:block>
+
+                                            <td th:text="${reservation.getDate_time()}"></td>
+
+                                            <td th:text="${reservation.getReservationStatus()}"></td>
+
+                                            <td>
+                                                <a th:if="${reservation.getReservationStatus() == T(com.finki.dians.mychargingstation.models.enums.ReservationStatus).ACTIVE}" th:method="GET" th:href="@{'/home/cancel-reservation/{reservation_id}' (reservation_id=${reservation.getReservation_id()})}"
+                                                   class="btn btn-sm btn-info edit-product">
+                                                    <i class="fa fa-trash">Cancel</i>
+                                                </a>
+                                            </td>
+
+                                        </tr>
+                                    </th:block>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+    </div>
+
+
+</th:block>
+

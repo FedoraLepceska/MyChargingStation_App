@@ -54,6 +54,7 @@ public class RatingController {
             }
             locationRatings.add(locationRating);
         }
+
         model.addAttribute("locationRatings", locationRatings);
         model.addAttribute("locations", locations);
         model.addAttribute("ratings", ratings);

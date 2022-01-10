@@ -1,0 +1,116 @@
+<div id="analytics">
+    <header id="header" class="header">
+        <div class="header-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-xl-5">
+                        <div class="text-container">
+
+                            <h1>Rate a station</h1>
+
+                            <form th:method="POST" th:action="@{/analytics/rate}">
+                                <select name="location_id" id="station" class="paddings">
+                                    <th:block th:each="location : ${locations}">
+                                        <option th:value="${location.getLocation_id()}"
+                                                th:text="${location.getAddress()}"></option>
+                                    </th:block>
+                                </select><br/><br/>
+
+                                <div class="stars" data-rating="3">
+                                    <span class="star"></span>
+                                    <span class="star"></span>
+                                    <span class="star"></span>
+                                    <span class="star"></span>
+                                    <span class="star"></span>
+                                </div>
+                                <br/><br/>
+
+                                <input type="hidden" name="rating" id="rating"/>
+
+                                <div class="flex">
+                                    <input type="submit" value="Rate" class="btn-solid-lg heightButton"/>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 col-xl-7">
+                        <div class="image-container">
+                            <div class="img-wrapper">
+                                <img class="img-fluid margin" th:src="@{/img/4403.png}" alt="alternative"
+                                     src="../../static/img/4403.png"/>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </header>
+</div>
+
+<!--ratings overview-->
+<div id="analyticsOverview">
+    <header id="headerOverview" class="header">
+        <div class="header-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-xl-5">
+                        <div class="text-container">
+                            <h1>Analytics</h1>
+                            <table class="table text-black-50">
+                                <th>Station</th>
+                                <th>Average Rating</th>
+                                <th:block th:each="locationRating: ${locationRatings}">
+                                    <tr>
+                                        <td th:text="${locationRating.getLocation().getAddress()}"></td>
+                                        <td th:text="${locationRating.getAverageRating()}"></td>
+                                    </tr>
+                                </th:block>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+</div>
+
+
+<!--script for stars-->
+<script>
+
+    //initial setup
+    document.addEventListener('DOMContentLoaded', function () {
+        let stars = document.querySelectorAll('.star');
+        stars.forEach(function (star) {
+            star.addEventListener('click', setRating);
+        });
+
+        let rating = parseInt(document.querySelector('.stars').getAttribute('data-rating'));
+        let target = stars[rating - 1];
+        target.dispatchEvent(new MouseEvent('click'));
+    });
+
+    function setRating(ev) {
+        let span = ev.currentTarget;
+        let stars = document.querySelectorAll('.star');
+        let match = false;
+        let num = 0;
+        stars.forEach(function (star, index) {
+            if (match) {
+                star.classList.remove('rated');
+            } else {
+                star.classList.add('rated');
+            }
+            //are we currently looking at the span that was clicked
+            if (star === span) {
+                match = true;
+                num = index + 1;
+            }
+        });
+        document.querySelector('.stars').setAttribute('data-rating', num);
+        document.querySelector('#rating').setAttribute('value', num);
+    }
+
+</script>
