@@ -2,7 +2,7 @@
     <div class="container">
 
         <a class="navbar-brand logo-image">
-            <img th:src="@{/img/krajno.png}" alt="alternative" src="../../static/img/krajno.png"/>
+            <img th:src="@{/img/krajno.png}" alt="alternative" src="../../static/img/krajno.png"/>&emsp;&emsp;
             <th:block th:if="${#request.getRemoteUser() != null}" th:text="${#request.getRemoteUser()}">
             </th:block>
         </a>
