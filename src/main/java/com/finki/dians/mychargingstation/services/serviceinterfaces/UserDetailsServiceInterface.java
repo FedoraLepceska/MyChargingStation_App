@@ -6,6 +6,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 
 public interface UserDetailsServiceInterface extends UserDetailsService {
 
-    MCSUser register (String username, String password, String confirmPassword, String name, String surname, Role role, String phone, String car_model, String car_plate);
+    MCSUser register (String email, String password, String confirmPassword, String name, String surname, Role role, String phone);
+    MCSUser findUserByEmail(String email);
+    MCSUser findById(int user_id);
 
 }

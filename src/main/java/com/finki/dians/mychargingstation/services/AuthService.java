@@ -5,16 +5,18 @@ import com.finki.dians.mychargingstation.models.exceptions.InvalidArgumentsExcep
 import com.finki.dians.mychargingstation.models.exceptions.InvalidCredentialsException;
 import com.finki.dians.mychargingstation.repositories.UserRepository;
 import com.finki.dians.mychargingstation.services.serviceinterfaces.AuthServiceInterface;
-import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
 public class AuthService implements AuthServiceInterface {
 
     private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
 
-    public AuthService(UserRepository userRepository) {
+    public AuthService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Override

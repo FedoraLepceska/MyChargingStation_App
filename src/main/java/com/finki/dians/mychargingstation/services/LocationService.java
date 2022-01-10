@@ -6,7 +6,6 @@ import com.finki.dians.mychargingstation.models.exceptions.InvalidArgumentsExcep
 import com.finki.dians.mychargingstation.models.exceptions.LocationNotFoundException;
 import com.finki.dians.mychargingstation.repositories.LocationRepository;
 import com.finki.dians.mychargingstation.services.serviceinterfaces.LocationServiceInterface;
-import com.sun.javaws.exceptions.InvalidArgumentException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -37,7 +36,7 @@ public class LocationService implements LocationServiceInterface {
             throw new InvalidArgumentsException();
         }
 
-        Location location = new Location(location_number, address, latitude, longitude, charger_type);
+        Location location = new Location(address, latitude, longitude, charger_type);
         return locationRepository.save(location);
     }
 
@@ -52,7 +51,7 @@ public class LocationService implements LocationServiceInterface {
         }
 
         deleteById(location_id);
-        Location location = new Location(location_number, address, latitude, longitude, charger_type);
+        Location location = new Location(address, latitude, longitude, charger_type);
         return locationRepository.save(location);
     }
 

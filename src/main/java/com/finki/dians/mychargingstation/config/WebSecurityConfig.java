@@ -6,18 +6,15 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(securedEnabled = true, prePostEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-    private final PasswordEncoder passwordEncoder;
     private final CustomEmailAndPasswordAuthenticationProvider authenticationProvider;
 
-    public WebSecurityConfig(PasswordEncoder passwordEncoder, CustomEmailAndPasswordAuthenticationProvider authenticationProvider) {
-        this.passwordEncoder = passwordEncoder;
+    public WebSecurityConfig(CustomEmailAndPasswordAuthenticationProvider authenticationProvider) {
         this.authenticationProvider = authenticationProvider;
     }
 
@@ -30,7 +27,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/", "/register")
+                .antMatchers("/", "/register", "/css/*", "/img/**")
                     .permitAll()
                 .anyRequest()
                     .authenticated()

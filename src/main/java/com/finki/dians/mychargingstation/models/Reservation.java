@@ -4,7 +4,7 @@ import com.finki.dians.mychargingstation.models.enums.ReservationStatus;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.sql.Timestamp;
 
 @Data
 @Entity
@@ -16,7 +16,8 @@ public class Reservation {
     private int reservation_id;
     private int user_id;
     private int location_id;
-    private Date date_time;
+    private int car_id;
+    private Timestamp date_time;
 
     @Enumerated(EnumType.STRING)
     private ReservationStatus reservationStatus;
@@ -24,10 +25,11 @@ public class Reservation {
     public Reservation() {
     }
 
-    public Reservation(int user_id, int location_id, Date date_time, ReservationStatus reservationStatus) {
+    public Reservation(int user_id, int location_id, int car_id, Timestamp date_time, ReservationStatus reservationStatus) {
         this.user_id = user_id;
         this.location_id = location_id;
         this.date_time = date_time;
+        this.car_id = car_id;
         this.reservationStatus = reservationStatus;
     }
 }

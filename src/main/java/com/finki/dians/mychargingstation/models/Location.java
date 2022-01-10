@@ -13,7 +13,6 @@ public class Location {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int location_id;
-    private long location_number;
     private String address;
     private float latitude;
     private float longitude;
@@ -24,11 +23,11 @@ public class Location {
     public Location() {
     }
 
-    public Location(long location_number, String address, float latitude, float longitude, ChargerType charger_type) {
-        this.location_number = location_number;
+    public Location(String address, float latitude, float longitude, ChargerType charger_type) {
         this.address = address;
         this.latitude = latitude;
         this.longitude = longitude;
         this.charger_type = charger_type;
     }
+
 }

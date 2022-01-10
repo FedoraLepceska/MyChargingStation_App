@@ -21,8 +21,6 @@ public class MCSUser implements UserDetails {
     private String name;
     private String surname;
     private String phone;
-    private String car_model;
-    private String car_plate;
 
     @Enumerated(value = EnumType.STRING)
     private Role role;
@@ -35,14 +33,12 @@ public class MCSUser implements UserDetails {
     public MCSUser() {
     }
 
-    public MCSUser(String email, String password, String name, String surname, String phone, String car_model, String car_plate, Role role) {
+    public MCSUser(String email, String password, String name, String surname, String phone, Role role) {
         this.email = email;
         this.password = password;
         this.name = name;
         this.surname = surname;
         this.phone = phone;
-        this.car_model = car_model;
-        this.car_plate = car_plate;
         this.role = role;
     }
 

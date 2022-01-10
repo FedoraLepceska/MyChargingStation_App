@@ -21,10 +21,11 @@ public class RegisterController {
 
     @GetMapping
     public String getRegisterPage(@RequestParam(required = false) String error, Model model){
-        if(error != null || !error.isEmpty()){
+        if(error != null && !error.isEmpty()){
             model.addAttribute("hasError", true);
             model.addAttribute("error", error);
         }
+        model.addAttribute("bodyContent", "register");
 
         return "master-template";
     }
@@ -35,17 +36,13 @@ public class RegisterController {
                            @RequestParam String confirmPassword,
                            @RequestParam String name,
                            @RequestParam String surname,
-                           @RequestParam Role role,
-                           @RequestParam String phone,
-                           @RequestParam String car_model,
-                           @RequestParam String car_plate){
+                           @RequestParam String phone){
         try{
-            userService.register(email, password, confirmPassword, name, surname, role, phone, car_model, car_plate);
+            userService.register(email, password, confirmPassword, name, surname, Role.ROLE_USER, phone);
             return "redirect:/login";
         } catch(Exception e){
             return "redirect:/register?=error" + e.getMessage();
         }
     }
-
 
 }
