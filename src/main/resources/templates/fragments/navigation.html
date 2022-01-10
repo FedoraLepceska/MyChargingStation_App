@@ -52,7 +52,7 @@
                     <a class="nav-link page-scroll" href="/profile">My Profile</a>
                 </li>
                 <li class="nav-item">
-                    <button class="logout-button" href="/logout">Logout</button>
+                    <button th:if="${#request.getRemoteUser() != null}" class="logout-button" href="/logout">Logout</button>
                 </li>
                 <li>
                     <div class="language-select">
