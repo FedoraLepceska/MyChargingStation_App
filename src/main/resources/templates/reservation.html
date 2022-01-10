@@ -1,4 +1,27 @@
 <th:block>
+    <script th:inline="javascript">
+        window.onload = function (){
+            setChargerType();
+        }
+
+        function setChargerType() {
+            /*<![CDATA[*/
+            const locationsList = /*[[${locations}]]*/ "locations";
+            /*]]>*/
+            const selected_location_id = document.getElementById("station").value;
+
+            for(i=0; i<locationsList.length; i++){
+                if(locationsList[i].location_id == selected_location_id){
+                    let selected_location = locationsList[i];
+                    console.log(selected_location);
+                    document.getElementById("charger").value = selected_location.charger_type;
+                    break;
+                }
+            }
+        }
+    </script>
+
+
     <header th:replace="fragments/header"></header>
 
     <div id="reserve">
@@ -11,7 +34,8 @@
                                 <h1>Reserve now!</h1>
                                 <form th:method="POST" th:action="@{/home/reserve}">
                                     <label for="station">Choose charging station:</label>&nbsp;
-                                    <select name="location_id" id="station" class="paddings">
+                                    <select name="location_id" id="station" class="paddings"
+                                            onchange="setChargerType()">
                                         <th:block th:each="location : ${locations}">
                                             <option th:value="${location.getLocation_id()}"
                                                     th:text="${location.getAddress()}"></option>
@@ -23,14 +47,18 @@
 
                                     <label for="carPlate">Car:</label>&nbsp;
                                     <select name="car_id" id="carPlate" class="paddings">
-                                        <th:block th:each="car : ${cars}">
+                                        <th:block th:if="${cars.size() == 0}">
+                                            <option name="car_plate" th:value="0"
+                                                    th:text="You have no cars added to your profile"></option>
+                                        </th:block>
+                                        <th:block th:if="${cars.size() > 0}" th:each="car : ${cars}">
                                             <option name="car_plate" th:value="${car.getCar_id()}"
                                                     th:text="${car.toString()}"></option>
                                         </th:block>
                                     </select><br/><br/>
 
                                     <label for="datetime">Date and Time:</label>&nbsp;
-                                    <input type="datetime-local" id="datetime" name="date_time" th:value="(${reservation} != null ? ${reservation.getDate_time()} : ' ')"/>
+                                    <input type="datetime-local" id="datetime" name="date_time" th:value="(${reservation} != null ? ${reservation.getDate_time()} : ' ')"/> <br/> <br/>
 
                                     <input type="submit" value="Reserve" class="btn-solid-lg "/>
                                 </form>
@@ -102,7 +130,6 @@
             </div>
         </header>
     </div>
-
-
 </th:block>
+
 
