@@ -30,6 +30,7 @@
                                 <div class="flex">
                                     <input type="submit" value="Rate" class="btn-solid-lg heightButton"/>
                                 </div>
+                                <label class="text-danger" th:if="${hasError}">Rating not successful. Please try again.</label>
                             </form>
                         </div>
                     </div>

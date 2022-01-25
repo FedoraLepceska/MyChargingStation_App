@@ -21,9 +21,8 @@ public class RegisterController {
 
     @GetMapping
     public String getRegisterPage(@RequestParam(required = false) String error, Model model){
-        if(error != null && !error.isEmpty()){
+        if(error != null){
             model.addAttribute("hasError", true);
-            model.addAttribute("error", error);
         }
         model.addAttribute("bodyContent", "register");
 
@@ -41,7 +40,7 @@ public class RegisterController {
             userService.register(email, password, confirmPassword, name, surname, Role.ROLE_USER, phone);
             return "redirect:/login";
         } catch(Exception e){
-            return "redirect:/register?=error" + e.getMessage();
+            return "redirect:/register?error=true";
         }
     }
 

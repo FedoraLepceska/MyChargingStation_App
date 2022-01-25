@@ -52,7 +52,9 @@
                     <a class="nav-link page-scroll" href="/profile">My Profile</a>
                 </li>
                 <li class="nav-item">
-                    <button th:if="${#request.getRemoteUser() != null}" class="logout-button" href="/logout">Logout</button>
+                    <form th:if="${#request.getRemoteUser() != null}" th:method="GET" th:action="@{/logout}">
+                        <button  class="logout-button">Logout</button>
+                    </form>
                 </li>
                 <li>
                     <div class="language-select">

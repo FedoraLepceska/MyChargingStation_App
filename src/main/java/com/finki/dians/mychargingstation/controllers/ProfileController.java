@@ -29,9 +29,8 @@ public class ProfileController {
 
     @GetMapping
     public String getProfilePage(@RequestParam(required = false) String error, HttpServletRequest request, Model model) {
-        if (error != null && !error.isEmpty()) {
+        if (error != null) {
             model.addAttribute("hasError", true);
-            model.addAttribute("error", error);
         }
 
         if (request.getRemoteUser() != null) {
@@ -52,6 +51,11 @@ public class ProfileController {
     public String addCar(HttpServletRequest request,
                          @RequestParam String car_plate,
                          @RequestParam String car_model) {
+
+        if(car_plate == null || car_plate.isEmpty() || car_model == null || car_model.isEmpty()){
+            return "redirect:/profile?error=true";
+        }
+
         try {
             MCSUser user;
             if (request.getRemoteUser() != null) {
@@ -60,7 +64,7 @@ public class ProfileController {
             }
             return "redirect:/profile";
         } catch (Exception e) {
-            return "redirect:/profile?=error" + e.getMessage();
+            return "redirect:/profile?error=true";
         }
     }
 

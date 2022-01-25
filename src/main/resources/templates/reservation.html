@@ -1,4 +1,4 @@
-<th:block>
+<th:block xmlns:th="http://www.w3.org/1999/html">
     <script th:inline="javascript">
         window.onload = function (){
             setChargerType();
@@ -48,8 +48,9 @@
                                     <label for="carPlate">Car:</label>&nbsp;
                                     <select name="car_id" id="carPlate" class="paddings">
                                         <th:block th:if="${cars.size() == 0}">
-                                            <option name="car_plate" th:value="0"
-                                                    th:text="You have no cars added to your profile"></option>
+                                            <option name="car_plate" value="0">
+                                                You have no cars added to your profile
+                                            </option>
                                         </th:block>
                                         <th:block th:if="${cars.size() > 0}" th:each="car : ${cars}">
                                             <option name="car_plate" th:value="${car.getCar_id()}"
@@ -60,6 +61,7 @@
                                     <label for="datetime">Date and Time:</label>&nbsp;
                                     <input type="datetime-local" id="datetime" name="date_time" th:value="(${reservation} != null ? ${reservation.getDate_time()} : ' ')"/> <br/> <br/>
 
+                                    <label th:if="${hasError}">*All fields are required.</label></br>
                                     <input type="submit" value="Reserve" class="btn-solid-lg "/>
                                 </form>
                             </div>
@@ -93,6 +95,9 @@
 
                                 <table class="table">
                                     <tr>
+                                        <th:block sec:authorize="hasRole('ROLE_ADMIN')">
+                                            <th>User</th>
+                                        </th:block>
                                         <th>Location</th>
                                         <th>Car Model</th>
                                         <th>Date and Time</th>
@@ -101,6 +106,10 @@
                                     </tr>
                                     <th:block th:each="reservation: ${reservations}">
                                         <tr>
+                                            <th:block th:each="user: ${users}" sec:authorize="hasRole('ROLE_ADMIN')">
+                                                <td th:if="${user.getUser_id() == reservation.getUser_id()}" th:text="${user.getName() + ' ' + user.getSurname() }"></td>
+                                            </th:block>
+
                                             <th:block th:each="location: ${locations}">
                                                 <td th:if="${reservation.getLocation_id() == location.getLocation_id()}" th:text="${location.getAddress()}"></td>
                                             </th:block>
