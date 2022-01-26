@@ -4,47 +4,55 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1>Log In</h1>
 
-                        <p>You don't have an account?
+<!--                        login title-->
+                        <h1 th:text="#{button.login}"></h1>
+
+                        <p>[[#{goToRegister}]]
                             <span class="nav-item">
-                                <a href="/register" class="nav-link page-scroll">Signup</a>
+                                <a href="/register" class="nav-link page-scroll" th:text="#{button.register}"></a>
                             </span>
                         </p>
 
+<!--                        login form-->
                         <div class="form-container">
                             <form th:method="POST" th:action="@{/login}"
                                   id="logInForm" data-toggle="validator" data-focus="false">
 
+<!--                                email-->
                                 <div class="form-group">
                                     <input
                                             id="username"
-                                            placeholder="email"
+                                            th:placeholder="#{user.email}"
                                             name="username"
                                             type="email"
                                             class="form-control-input"
                                             required/>
                                 </div>
 
+<!--                                password-->
                                 <div class="form-group">
                                     <input
                                             id="password"
                                             name="password"
-                                            placeholder="password"
+                                            th:placeholder="#{user.password}"
                                             type="password"
                                             class="form-control-input"
                                             required/>
                                 </div>
 
+<!--                                login button-->
                                 <div class="form-group">
                                     <button
                                             type="submit"
-                                            class="form-control-submit-button">
-                                        LOG IN
+                                            class="form-control-submit-button"
+                                        th:text="#{button.login}">
                                     </button>
 
                                 </div>
-                                <label class="text-danger" th:if="${hasError}">Wrong email or password</label>
+
+<!--                                error message-->
+                                <label class="text-danger" th:if="${hasError}" th:text="#{error.login}"></label>
 
                             </form>
                         </div>

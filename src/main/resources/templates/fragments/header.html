@@ -4,14 +4,14 @@
             <div class="row">
                 <div class="col-lg-6 col-xl-5">
                     <div class="text-container">
-                        <h1>Reserve your charging station now!</h1>
-                        <a class="btn-solid-lg page-scroll" href="#reserve">Reserve</a>
+                        <h1 th:text="#{res.reserveTitleHome}"></h1>
+                        <a class="btn-solid-lg page-scroll" href="#reserve" th:text="#{button.reserve}"></a>
                     </div>
                 </div>
                 <div class="col-lg-6 col-xl-7">
                     <div class="image-container">
                         <div class="img-wrapper">
-                            <img class="img-fluid" th:src="@{/img/header-software-app.png}" alt="alternative" src="../../static/img/header-software-app.png"/>
+                            <img class="img-fluid" th:src="@{/img/header.png}" alt="alternative" src="../../static/img/header.png"/>
                         </div>
                     </div>
                 </div>

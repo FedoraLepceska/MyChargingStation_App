@@ -1,56 +1,63 @@
-<th:block>
+<th:block xmlns:spring="http://www.w3.org/1999/XSL/Transform">
     <div id="my-profile">
         <header id="header" class="header">
             <div class="header-content">
                 <div class="container rounded bg-white mt-5 mb-5">
                     <div class="row">
 
+<!--                        image my-profile-->
                         <div class="col-md-3 border-right">
                             <div class="d-flex flex-column align-items-center text-center p-3 py-5">
                                 <img class="rounded-circle mt-5" width="150px"
                                      src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Circle-icons-profile.svg/1024px-Circle-icons-profile.svg.png"
                                      alt="profile"/>
-                                <span class="font-weight-bold">My Profile</span>
+                                <span class="font-weight-bold">[[#{nav.myProfile}]]</span>
                                 <span class="text-black-50"></span></div>
                         </div>
 
+<!--                        profile overview-->
                         <div class="col-md-5 border-right">
                             <div class="p-3 py-5">
                                 <div class="d-flex justify-content-between align-items-center mb-3">
-                                    <h4 class="text-right">Profile Overview</h4>
+                                    <h4 class="text-right">[[#{profile.overview}]]</h4>
                                 </div>
 
                                 <div class="row mt-2">
+<!--                                user name-->
                                     <div class="col-md-6">
-                                        <label for="name" class="labels">Name</label>
+                                        <label for="name" class="labels">[[#{user.name}]]</label>
                                         <input th:if="${user} != null" th:value="${user.getName()}"
                                                id="name" type="text" class="form-control" readonly/>
                                     </div>
+<!--                                user surname-->
                                     <div class="col-md-6">
-                                        <label for="surname" class="labels">Surname</label>
+                                        <label for="surname" class="labels">[[#{user.surname}]]</label>
                                         <input th:if="${user} != null" th:value="${user.getSurname()}"
                                                id="surname" type="text" class="form-control" readonly/>
                                     </div>
                                 </div>
 
+<!--                                user phone-->
                                 <div class="col-md-12">
-                                    <label for="phone" class="labels">Mobile Number</label>
+                                    <label for="phone" class="labels">[[#{user.phone}]]</label>
                                     <input th:if="${user} != null" th:value="${user.getPhone()}"
                                            id="phone" type="text" class="form-control" readonly/>
                                 </div>
 
+<!--                                user email-->
                                 <div class="col-md-12">
-                                    <label for="email" class="labels">Email</label>
+                                    <label for="email" class="labels">[[#{user.email}]]</label>
                                     <input th:if="${user} != null" th:value="${user.getEmail()}"
                                            id="email" type="text" class="form-control" readonly/>
                                 </div>
 
 
+<!--                                user cars-->
                                 <div class="row mt-3">
                                     <table class="table">
                                         <tr>
-                                            <th>Car Model</th>
-                                            <th>Car Plate</th>
+                                            <th>[[#{user.carModel}]]</th>
+                                            <th>[[#{user.carPlate}]]</th>
                                         </tr>
                                         <th:block th:each="car: ${cars}">
                                             <tr>
@@ -66,32 +73,34 @@
                         </div>
 
 
+<!--                        add a car-->
                         <div class="col-md-4 border-right">
                             <div class="p-3 py-5">
                                 <div class="d-flex justify-content-between align-items-center mb-4">
-                                    <h4 class="text-right">Add a new car:</h4>
+                                    <h4 class="text-right">[[#{button.addCar}]]:</h4>
                                 </div>
 
                                 <form th:method="POST" th:action="@{/profile/add-car}">
                                     <div class="row mt-3">
                                         <div class="col-md-12">
-                                            <label for="newCarModel" class="labels">Car Model</label>
+                                            <label for="newCarModel" class="labels">[[#{user.carModel}]]</label>
                                             <input id="newCarModel" name="car_model" type="text" class="form-control"
-                                                   placeholder="enter car model"/>
+                                                   th:placeholder="#{car.carModel}"/>
                                         </div>
 
+
                                         <div class="col-md-12">
-                                            <label for="newCarPlate" class="labels">Car Plate</label>
+                                            <label for="newCarPlate" class="labels">[[#{user.carPlate}]]</label>
                                             <input id="newCarPlate" name="car_plate" type="text" class="form-control"
-                                                   placeholder="enter car plate"/>
+                                                   th:placeholder="#{car.carPlate}"/>
                                         </div>
 
                                     </div>
                                     <div class="mt-5 text-center">
-                                        <button class="btn btn-primary profile-button" type="submit">
-                                            Add a new car
+                                        <button class="form-control-submit-button" type="submit">
+                                            [[#{button.addCar}]]
                                         </button>
-                                        <label class="text-danger" th:if="${hasError}">Failed. Please try again.</label>
+                                        <label class="text-danger" th:if="${hasError}">[[#{error.failed}]]</label>
                                     </div>
                                 </form>
                             </div>

@@ -6,8 +6,10 @@
                     <div class="col-lg-6 col-xl-5">
                         <div class="text-container">
 
-                            <h1>Rate a station</h1>
+<!--                            title-->
+                            <h1>[[#{rate.title}]]</h1>
 
+<!--                            list locations-->
                             <form th:method="POST" th:action="@{/analytics/rate}">
                                 <select name="location_id" id="station" class="paddings">
                                     <th:block th:each="location : ${locations}">
@@ -16,6 +18,7 @@
                                     </th:block>
                                 </select><br/><br/>
 
+<!--                        star rating-->
                                 <div class="stars" data-rating="3">
                                     <span class="star"></span>
                                     <span class="star"></span>
@@ -27,19 +30,25 @@
 
                                 <input type="hidden" name="rating" id="rating"/>
 
+<!--                                rate button-->
                                 <div class="flex">
-                                    <input type="submit" value="Rate" class="btn-solid-lg heightButton"/>
+                                    <button type="submit"  class="btn-solid-lg heightButton">
+                                        [[#{button.rate}]]
+                                    </button>
                                 </div>
-                                <label class="text-danger" th:if="${hasError}">Rating not successful. Please try again.</label>
+
+<!--                                error message-->
+                                <label class="text-danger" th:if="${hasError}">[[#{error.rating}]]</label>
                             </form>
                         </div>
                     </div>
 
+<!--                    image-->
                     <div class="col-lg-6 col-xl-7">
                         <div class="image-container">
                             <div class="img-wrapper">
-                                <img class="img-fluid margin" th:src="@{/img/4403.png}" alt="alternative"
-                                     src="../../static/img/4403.png"/>
+                                <img class="img-fluid margin" th:src="@{/img/rating.png}" alt="alternative"
+                                     src="../../static/img/rating.png"/>
                             </div>
                         </div>
                     </div>
@@ -58,10 +67,14 @@
                 <div class="row">
                     <div class="col-lg-6 col-xl-5">
                         <div class="text-container">
-                            <h1>Analytics</h1>
+
+<!--                            analytics title-->
+                            <h1>[[#{nav.analytics}]]</h1>
+
+<!--                            analytics table-->
                             <table class="table text-black-50">
-                                <th>Station</th>
-                                <th>Average Rating</th>
+                                <th>[[#{rate.location}]]</th>
+                                <th>[[#{rate.avgRating}]]g</th>
                                 <th:block th:each="locationRating: ${locationRatings}">
                                     <tr>
                                         <td th:text="${locationRating.getLocation().getAddress()}"></td>
