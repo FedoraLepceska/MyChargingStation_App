@@ -6,10 +6,10 @@
                     <div class="col-lg-6 col-xl-5">
                         <div class="text-container">
 
-<!--                            title-->
+                            <!--                            title-->
                             <h1>[[#{rate.title}]]</h1>
 
-<!--                            list locations-->
+                            <!--                            list locations-->
                             <form th:method="POST" th:action="@{/analytics/rate}">
                                 <select name="location_id" id="station" class="paddings">
                                     <th:block th:each="location : ${locations}">
@@ -18,7 +18,7 @@
                                     </th:block>
                                 </select><br/><br/>
 
-<!--                        star rating-->
+                                <!--                        star rating-->
                                 <div class="stars" data-rating="3">
                                     <span class="star"></span>
                                     <span class="star"></span>
@@ -30,20 +30,20 @@
 
                                 <input type="hidden" name="rating" id="rating"/>
 
-<!--                                rate button-->
+                                <!--                                rate button-->
                                 <div class="flex">
-                                    <button type="submit"  class="btn-solid-lg heightButton">
+                                    <button type="submit" class="btn-solid-lg heightButton">
                                         [[#{button.rate}]]
                                     </button>
                                 </div>
 
-<!--                                error message-->
+                                <!--                                error message-->
                                 <label class="text-danger" th:if="${hasError}">[[#{error.rating}]]</label>
                             </form>
                         </div>
                     </div>
 
-<!--                    image-->
+                    <!--                    image-->
                     <div class="col-lg-6 col-xl-7">
                         <div class="image-container">
                             <div class="img-wrapper">
@@ -68,10 +68,10 @@
                     <div class="col-lg-6 col-xl-5">
                         <div class="text-container">
 
-<!--                            analytics title-->
+                            <!--                            analytics title-->
                             <h1>[[#{nav.analytics}]]</h1>
 
-<!--                            analytics table-->
+                            <!--                            analytics table-->
                             <table class="table text-black-50">
                                 <th>[[#{rate.location}]]</th>
                                 <th>[[#{rate.avgRating}]]g</th>

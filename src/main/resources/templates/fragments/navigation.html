@@ -2,9 +2,9 @@
     <div class="container">
 
         <a class="navbar-brand logo-image">
-<!--            logo-->
+            <!--            logo-->
             <img th:src="@{/img/car.png}" alt="alternative" src="../../static/img/car.png"/>&emsp;&emsp;
-<!--            email of the authenticated user-->
+            <!--            email of the authenticated user-->
             <th:block th:if="${#request.getRemoteUser() != null}" th:text="${#request.getRemoteUser()}">
             </th:block>
         </a>
@@ -19,54 +19,56 @@
         <div class="collapse navbar-collapse" id="navbarsExampleDefault">
             <ul class="navbar-nav ml-auto">
 
-<!--                home-->
-                <li class="nav-item">
-                    <a class="nav-link page-scroll first-item" href="/home">[[#{nav.home}]]<span
-                            class="sr-only">(current)</span></a>
-                </li>
+                <th:block th:if="${#request.getRemoteUser() != null}">
+                    <!--                home-->
+                    <li class="nav-item">
+                        <a class="nav-link page-scroll first-item" href="/home">[[#{nav.home}]]<span
+                                class="sr-only">(current)</span></a>
+                    </li>
 
-<!--                reservations-->
-                <li class="nav-item dropdown">
-                    <a aria-expanded="false" aria-haspopup="true"
-                       class="nav-link dropdown-toggle page-scroll" id="navbarDropdown1">[[#{nav.reservations}]]</a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <Link class="dropdown-item" >
-                        <a class="item-text" href="/home#myReservations">[[#{nav.myReservations}]]</a>
-                        <Link class="dropdown-item">
-                        <a class="item-text" href="/home#reserve">[[#{nav.makeReservation}]]</a>
-                    </div>
-                </li>
+                    <!--                reservations-->
+                    <li class="nav-item dropdown">
+                        <a aria-expanded="false" aria-haspopup="true"
+                           class="nav-link dropdown-toggle page-scroll" id="navbarDropdown1">[[#{nav.reservations}]]</a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <Link class="dropdown-item">
+                            <a class="item-text" href="/home#myReservations">[[#{nav.myReservations}]]</a>
+                            <Link class="dropdown-item">
+                            <a class="item-text" href="/home#reserve">[[#{nav.makeReservation}]]</a>
+                        </div>
+                    </li>
 
-<!--                faqs and analytics-->
-                <li class="nav-item dropdown">
-                    <a aria-expanded="false" aria-haspopup="true"
-                       class="nav-link dropdown-toggle page-scroll" id="navbarDropdown2" href="/faq">[[#{nav.FAQs}]]</a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <Link class="dropdown-item" >
+                    <!--                faqs and analytics-->
+                    <li class="nav-item dropdown">
+                        <a aria-expanded="false" aria-haspopup="true"
+                           class="nav-link dropdown-toggle page-scroll" id="navbarDropdown2"
+                           href="/faq">[[#{nav.FAQs}]]</a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <Link class="dropdown-item">
                             <a class="item-text" href="/analytics">[[#{nav.analytics}]]</a>
-                        <Link class="dropdown-item">
+                            <Link class="dropdown-item">
                             <a class="item-text" href="/help">[[#{nav.help}]]</a>
-                    </div>
-                </li>
+                        </div>
+                    </li>
 
-<!--                about-us-->
-                <li class="nav-item">
-                    <a class="nav-link page-scroll" href="/about">[[#{nav.aboutUs}]]</a>
-                </li>
+                    <!--                about-us-->
+                    <li class="nav-item">
+                        <a class="nav-link page-scroll" href="/about">[[#{nav.aboutUs}]]</a>
+                    </li>
 
-<!--                my-profile-->
-                <li class="nav-item">
-                    <a class="nav-link page-scroll" href="/profile">[[#{nav.myProfile}]]</a>
-                </li>
+                    <!--                my-profile-->
+                    <li class="nav-item">
+                        <a class="nav-link page-scroll" href="/profile">[[#{nav.myProfile}]]</a>
+                    </li>
 
-<!--                logout-->
-                <li class="nav-item">
-                    <form th:if="${#request.getRemoteUser() != null}" th:method="GET" th:action="@{/logout}">
-                        <button  class="logout-button">[[#{button.logout}]]</button>
-                    </form>
-                </li>
-
-<!--                languages-->
+                    <!--                logout-->
+                    <li class="nav-item">
+                        <form th:method="GET" th:action="@{/logout}">
+                            <button class="logout-button">[[#{button.logout}]]</button>
+                        </form>
+                    </li>
+                </th:block>
+                <!--                languages-->
                 &ensp;
                 <li class="nav-item">
                     <a class="item-text" th:href="@{?lang=en}">
@@ -76,13 +78,13 @@
                 &ensp;
                 <li class="nav-item">
                     <a class="item-text" th:href="@{?lang=mk}">
-                        <img th:src="@{/img/mk.png}" alt="mk"  width="30" height="20" src="../../static/img/mk.png"/>
+                        <img th:src="@{/img/mk.png}" alt="mk" width="30" height="20" src="../../static/img/mk.png"/>
                     </a>
                 </li>
                 &ensp;
                 <li class="nav-item">
                     <a class="item-text" th:href="@{?lang=alb}">
-                        <img th:src="@{/img/alb.png}" alt="alb"  width="30" height="20" src="../../static/img/alb.png"/>
+                        <img th:src="@{/img/alb.png}" alt="alb" width="30" height="20" src="../../static/img/alb.png"/>
                     </a>
                 </li>
             </ul>

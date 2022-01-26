@@ -1,6 +1,6 @@
 <th:block xmlns:th="http://www.w3.org/1999/html" xmlns:sec="http://www.w3.org/1999/xhtml">
     <script th:inline="javascript">
-        window.onload = function (){
+        window.onload = function () {
             setChargerType();
         }
 
@@ -10,8 +10,8 @@
             /*]]>*/
             const selected_location_id = document.getElementById("station").value;
 
-            for(i=0; i<locationsList.length; i++){
-                if(locationsList[i].location_id == selected_location_id){
+            for (i = 0; i < locationsList.length; i++) {
+                if (locationsList[i].location_id == selected_location_id) {
                     let selected_location = locationsList[i];
                     console.log(selected_location);
                     document.getElementById("charger").value = selected_location.charger_type;
@@ -49,7 +49,7 @@
                                     <select name="car_id" id="carPlate" class="paddings">
                                         <th:block th:if="${cars.size() == 0}">
                                             <option name="car_plate" value="0"
-                                                th:text="#{res.noCars}">
+                                                    th:text="#{res.noCars}">
                                             </option>
                                         </th:block>
                                         <th:block th:if="${cars.size() > 0}" th:each="car : ${cars}">
@@ -59,10 +59,12 @@
                                     </select><br/><br/>
 
                                     <label for="datetime">[[#{res.dateTime}]]:</label>&nbsp;
-                                    <input type="datetime-local" id="datetime" name="date_time" th:value="(${reservation} != null ? ${reservation.getDate_time()} : ' ')"/> <br/> <br/>
+                                    <input type="datetime-local" id="datetime" name="date_time"
+                                           th:value="(${reservation} != null ? ${reservation.getDate_time()} : ' ')"/>
+                                    <br/> <br/>
 
                                     <label th:if="${hasError}">*[[#{requiredFields}]].</label></br>
-                                    <button type="submit" class="btn-solid-lg " th:text="#{button.reserve}"> </button>
+                                    <button type="submit" class="btn-solid-lg " th:text="#{button.reserve}"></button>
                                 </form>
                             </div>
                         </div>
@@ -107,15 +109,18 @@
                                     <th:block th:each="reservation: ${reservations}">
                                         <tr>
                                             <th:block th:each="user: ${users}" sec:authorize="hasRole('ROLE_ADMIN')">
-                                                <td th:if="${user.getUser_id() == reservation.getUser_id()}" th:text="${user.getName() + ' ' + user.getSurname() }"></td>
+                                                <td th:if="${user.getUser_id() == reservation.getUser_id()}"
+                                                    th:text="${user.getName() + ' ' + user.getSurname() }"></td>
                                             </th:block>
 
                                             <th:block th:each="location: ${locations}">
-                                                <td th:if="${reservation.getLocation_id() == location.getLocation_id()}" th:text="${location.getAddress()}"></td>
+                                                <td th:if="${reservation.getLocation_id() == location.getLocation_id()}"
+                                                    th:text="${location.getAddress()}"></td>
                                             </th:block>
 
                                             <th:block th:each="car: ${cars}">
-                                                <td th:if="${reservation.getCar_id() == car.getCar_id()}" th:text="${car.toString()}"></td>
+                                                <td th:if="${reservation.getCar_id() == car.getCar_id()}"
+                                                    th:text="${car.toString()}"></td>
                                             </th:block>
 
                                             <td th:text="${reservation.getDate_time()}"></td>
@@ -123,7 +128,9 @@
                                             <td th:text="${reservation.getReservationStatus()}"></td>
 
                                             <td>
-                                                <a th:if="${reservation.getReservationStatus() == T(com.finki.dians.mychargingstation.models.enums.ReservationStatus).ACTIVE}" th:method="GET" th:href="@{'/home/cancel-reservation/{reservation_id}' (reservation_id=${reservation.getReservation_id()})}"
+                                                <a th:if="${reservation.getReservationStatus() == T(com.finki.dians.mychargingstation.models.enums.ReservationStatus).ACTIVE}"
+                                                   th:method="GET"
+                                                   th:href="@{'/home/cancel-reservation/{reservation_id}' (reservation_id=${reservation.getReservation_id()})}"
                                                    class="btn btn-sm btn-info edit-product">
                                                     <i class="fa fa-trash" th:text="#{button.cancel}"></i>
                                                 </a>

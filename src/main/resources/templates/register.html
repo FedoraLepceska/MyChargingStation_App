@@ -5,18 +5,19 @@
                 <div class="row">
                     <div class="col-lg-12">
 
-<!--                        register title-->
+                        <!--                        register title-->
                         <h1 th:text="#{button.register}"></h1>
                         <p>[[#{fillForm}]]<br/>[[#{goToLogin}]]
                             <span class="nav-item">
                                     <a href="/login" class="nav-link page-scroll" th:text="#{button.login}"></a>
                                 </span></p>
 
-<!--                        register form-->
+                        <!--                        register form-->
                         <div class="form-container">
-                            <form th:method="POST" th:action="@{/register}" id="signUpForm" data-toggle="validator" data-focus="false">
+                            <form th:method="POST" th:action="@{/register}" id="signUpForm" data-toggle="validator"
+                                  data-focus="false">
 
-<!--                                name-->
+                                <!--                                name-->
                                 <div class="form-group">
                                     <input
                                             name="name"
@@ -27,7 +28,7 @@
                                             required/>
                                 </div>
 
-<!--                                surname-->
+                                <!--                                surname-->
                                 <div class="form-group">
                                     <input
                                             name="surname"
@@ -38,7 +39,7 @@
                                             required/>
                                 </div>
 
-<!--                                phone-->
+                                <!--                                phone-->
                                 <div class="form-group">
                                     <input
                                             name="phone"
@@ -49,7 +50,7 @@
                                             required/>
                                 </div>
 
-<!--                                email-->
+                                <!--                                email-->
                                 <div class="form-group">
                                     <input
                                             th:autocomplete="new-password"
@@ -61,7 +62,7 @@
                                             required/>
                                 </div>
 
-<!--                                password-->
+                                <!--                                password-->
                                 <div class="form-group">
                                     <input
                                             autocomplete="new-password"
@@ -73,7 +74,7 @@
                                             required/>
                                 </div>
 
-<!--                                confirm password-->
+                                <!--                                confirm password-->
                                 <div class="form-group">
                                     <input
                                             id="confirmpassword"
@@ -84,14 +85,14 @@
                                             required/>
                                 </div>
 
-<!--                                register button-->
+                                <!--                                register button-->
                                 <div class="form-group">
                                     <button type="submit" class="form-control-submit-button"
                                             th:text="#{button.register}">
                                     </button>
                                 </div>
 
-<!--                                error message-->
+                                <!--                                error message-->
                                 <label class="text-danger" th:if="${hasError}" th:text="#{error.register}"></label>
                             </form>
                         </div>

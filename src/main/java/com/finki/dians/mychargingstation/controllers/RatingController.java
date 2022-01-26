@@ -4,7 +4,6 @@ import com.finki.dians.mychargingstation.models.Location;
 import com.finki.dians.mychargingstation.models.LocationRating;
 import com.finki.dians.mychargingstation.models.MCSUser;
 import com.finki.dians.mychargingstation.models.Rating;
-import com.finki.dians.mychargingstation.models.enums.ReservationStatus;
 import com.finki.dians.mychargingstation.services.LocationService;
 import com.finki.dians.mychargingstation.services.RatingService;
 import com.finki.dians.mychargingstation.services.UserDetailsService;
@@ -16,8 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
-import java.sql.Timestamp;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -77,12 +74,6 @@ public class RatingController {
         } catch (Exception e) {
             return "redirect:/analytics" + e.getMessage();
         }
-    }
-
-    @GetMapping("/access_denied")
-    public String getAccessDeniedPage (Model model) {
-
-        return "master-template";
     }
 
 }

@@ -5,7 +5,7 @@
                 <div class="container rounded bg-white mt-5 mb-5">
                     <div class="row">
 
-<!--                        image my-profile-->
+                        <!--                        image my-profile-->
                         <div class="col-md-3 border-right">
                             <div class="d-flex flex-column align-items-center text-center p-3 py-5">
                                 <img class="rounded-circle mt-5" width="150px"
@@ -15,7 +15,7 @@
                                 <span class="text-black-50"></span></div>
                         </div>
 
-<!--                        profile overview-->
+                        <!--                        profile overview-->
                         <div class="col-md-5 border-right">
                             <div class="p-3 py-5">
                                 <div class="d-flex justify-content-between align-items-center mb-3">
@@ -23,13 +23,13 @@
                                 </div>
 
                                 <div class="row mt-2">
-<!--                                user name-->
+                                    <!--                                user name-->
                                     <div class="col-md-6">
                                         <label for="name" class="labels">[[#{user.name}]]</label>
                                         <input th:if="${user} != null" th:value="${user.getName()}"
                                                id="name" type="text" class="form-control" readonly/>
                                     </div>
-<!--                                user surname-->
+                                    <!--                                user surname-->
                                     <div class="col-md-6">
                                         <label for="surname" class="labels">[[#{user.surname}]]</label>
                                         <input th:if="${user} != null" th:value="${user.getSurname()}"
@@ -37,14 +37,14 @@
                                     </div>
                                 </div>
 
-<!--                                user phone-->
+                                <!--                                user phone-->
                                 <div class="col-md-12">
                                     <label for="phone" class="labels">[[#{user.phone}]]</label>
                                     <input th:if="${user} != null" th:value="${user.getPhone()}"
                                            id="phone" type="text" class="form-control" readonly/>
                                 </div>
 
-<!--                                user email-->
+                                <!--                                user email-->
                                 <div class="col-md-12">
                                     <label for="email" class="labels">[[#{user.email}]]</label>
                                     <input th:if="${user} != null" th:value="${user.getEmail()}"
@@ -52,7 +52,7 @@
                                 </div>
 
 
-<!--                                user cars-->
+                                <!--                                user cars-->
                                 <div class="row mt-3">
                                     <table class="table">
                                         <tr>
@@ -73,7 +73,7 @@
                         </div>
 
 
-<!--                        add a car-->
+                        <!--                        add a car-->
                         <div class="col-md-4 border-right">
                             <div class="p-3 py-5">
                                 <div class="d-flex justify-content-between align-items-center mb-4">

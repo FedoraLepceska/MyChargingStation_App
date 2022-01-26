@@ -112,8 +112,8 @@ public class HomeController {
     }
 
     @GetMapping("/access_denied")
-    public String getAccessDeniedPage(Model model) {
-
+    public String getAccessDeniedPage (Model model){
+        model.addAttribute("bodyContent", "access-denied");
         return "master-template";
     }
 
