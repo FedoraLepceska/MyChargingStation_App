@@ -108,6 +108,7 @@
                                     </tr>
                                     <th:block th:each="reservation: ${reservations}">
                                         <tr>
+                                            <td></td>
                                             <th:block th:each="user: ${users}" sec:authorize="hasRole('ROLE_ADMIN')">
                                                 <td th:if="${user.getUser_id() == reservation.getUser_id()}"
                                                     th:text="${user.getName() + ' ' + user.getSurname() }"></td>

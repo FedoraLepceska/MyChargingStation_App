@@ -15,5 +15,4 @@ public class FAQsController {
 
         return "master-template";
     }
-
 }
