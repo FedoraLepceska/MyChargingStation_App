@@ -48,12 +48,9 @@ public class HomeController {
 
         if (request.getRemoteUser() != null) {
             MCSUser user = userService.findUserByEmail(request.getRemoteUser());
-
+            model.addAttribute("user", user);
             List<Car> cars = carService.listAll();
-            List<Car> userCars = cars.stream()
-                    .filter(c -> c.getUser_id() == user.getUser_id())
-                    .collect(Collectors.toList());
-            model.addAttribute("cars", userCars);
+            model.addAttribute("cars", cars);
 
             List<Reservation> reservations = reservationService.listAll();
             if(user.getRole() == Role.ROLE_USER) {
@@ -63,10 +60,8 @@ public class HomeController {
             }
             model.addAttribute("reservations", reservations);
 
-            if(user.getRole() == Role.ROLE_ADMIN){
-                List<MCSUser> users = userService.listAll();
-                model.addAttribute("users", users);
-            }
+            List<MCSUser> users = userService.listAll();
+            model.addAttribute("users", users);
         }
 
         model.addAttribute("locations", locationService.listAll());

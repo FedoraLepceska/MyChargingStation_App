@@ -2156,6 +2156,10 @@ a:hover.back-to-top {
         margin-right: 1.5rem;
     }
 
+    .first-item {
+        text-transform: capitalize;
+    }
+
     .footer .footer-col.middle {
         margin-right: 0.75rem;
         margin-left: 0.75rem;
@@ -2198,7 +2202,6 @@ a:hover.back-to-top {
     .white-text {
         color: floralwhite;
         font-weight: lighter;
-        text-shadow: 1px 1px #61dafb;
     }
 
     /* end of extra pages */
@@ -2251,6 +2254,7 @@ a:hover.back-to-top {
 }
 
 .margin {
+    margin-top: 150px;
     margin-left: 150px;
 }
 
@@ -2445,17 +2449,31 @@ button[type="submit"]:hover {
 #contact .section-title{
     padding-bottom: 40px;
 }
-#contact .contact-items {
-    /* max-width: 400px; */
-    width: 100%;
+
+@media (min-width: 700px) {
+    #contact .contact-items {
+        /* max-width: 400px; */
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+    }
+}
+@media (max-width: 700px) {
+    #contact .contact-items {
+        /* max-width: 400px; */
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
 }
 #contact .contact-item {
-    width: 80%;
+    width: 400px;
     text-align: center;
     border-radius: 10px;
     padding: 30px;
     margin: 30px;
     display: flex;
+    background-color: cornflowerblue;
     justify-content: center;
     align-items: center;
     flex-direction: column;

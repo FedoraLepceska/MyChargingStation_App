@@ -60,7 +60,7 @@ body {
     line-height: 1.5;
     color: #212529;
     text-align: left;
-    background-color: #fff;
+    background-color: #5f4dee;
 }
 
 [tabindex="-1"]:focus {
@@ -208,6 +208,33 @@ svg {
 
 table {
     border-collapse: collapse;
+}
+
+.table1, td, th {
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.table1 {
+    border-collapse: collapse;
+    width: 1000px;
+}
+
+th, td {
+    padding: 15px;
+    color: white;
+}
+
+.table_car th{
+    color:black;
+}
+.table_car td{
+    color:black;
+}
+.table_car {
+    width: 1000px;
+    margin-bottom: 1rem;
+    color: #212529;
 }
 
 caption {

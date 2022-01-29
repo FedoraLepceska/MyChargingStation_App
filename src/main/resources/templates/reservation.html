@@ -95,7 +95,7 @@
                             <div class="text-container">
                                 <h1 th:text="#{nav.myReservations}"></h1>
 
-                                <table class="table">
+                                <table class="table1">
                                     <tr>
                                         <th:block sec:authorize="hasRole('ROLE_ADMIN')">
                                             <th th:text="#{res.user}"></th>
@@ -108,8 +108,7 @@
                                     </tr>
                                     <th:block th:each="reservation: ${reservations}">
                                         <tr>
-                                            <td></td>
-                                            <th:block th:each="user: ${users}" sec:authorize="hasRole('ROLE_ADMIN')">
+                                            <th:block th:each="user: ${users}">
                                                 <td th:if="${user.getUser_id() == reservation.getUser_id()}"
                                                     th:text="${user.getName() + ' ' + user.getSurname() }"></td>
                                             </th:block>

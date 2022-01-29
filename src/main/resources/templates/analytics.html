@@ -72,9 +72,9 @@
                             <h1>[[#{nav.analytics}]]</h1>
 
                             <!--                            analytics table-->
-                            <table class="table text-black-50">
+                            <table class="table1 text-black-50">
                                 <th>[[#{rate.location}]]</th>
-                                <th>[[#{rate.avgRating}]]g</th>
+                                <th>[[#{rate.avgRating}]]</th>
                                 <th:block th:each="locationRating: ${locationRatings}">
                                     <tr>
                                         <td th:text="${locationRating.getLocation().getAddress()}"></td>

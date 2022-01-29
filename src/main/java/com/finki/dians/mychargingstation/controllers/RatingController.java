@@ -33,7 +33,7 @@ public class RatingController {
     }
 
     @GetMapping
-    public String getAnalyticsPage(Model model) {
+    public String getAnalyticsPage(Model model, HttpServletRequest request) {
         List<Location> locations = locationService.listAll();
         List<Rating> ratings = ratingService.listAll();
         List<LocationRating> locationRatings = new ArrayList<>();
@@ -51,6 +51,8 @@ public class RatingController {
             }
             locationRatings.add(locationRating);
         }
+        MCSUser user = userService.findUserByEmail(request.getRemoteUser());
+        model.addAttribute("user", user);
 
         model.addAttribute("locationRatings", locationRatings);
         model.addAttribute("locations", locations);

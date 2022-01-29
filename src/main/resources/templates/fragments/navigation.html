@@ -1,11 +1,11 @@
-<nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
+<nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top" xmlns:th="http://www.w3.org/1999/xhtml">
     <div class="container">
 
-        <a class="navbar-brand logo-image">
+        <a class="navbar-brand logo-image" style="color: white">
             <!--            logo-->
-            <img th:src="@{/img/car.png}" alt="alternative" src="../../static/img/car.png"/>&emsp;&emsp;
+            <img th:src="@{/img/car.png}" alt="alternative" src="../../static/img/car.png" />&emsp;&emsp;
             <!--            email of the authenticated user-->
-            <th:block th:if="${#request.getRemoteUser() != null}" th:text="${#request.getRemoteUser()}">
+            <th:block th:if="${#request.getRemoteUser() != null}" th:text="${user.getName() + ' ' + user.getSurname()}">
             </th:block>
         </a>
 

@@ -1,5 +1,6 @@
 package com.finki.dians.mychargingstation.controllers;
 
+import com.finki.dians.mychargingstation.models.MCSUser;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
