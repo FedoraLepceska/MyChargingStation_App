@@ -407,8 +407,8 @@ input[type='checkbox'] {
 .logout-button {
     display: inline-block;
     width: 100%;
-    height: 3.125rem;
-    border: 1px solid #5f4dee;
+    height: 2.125rem;
+    border: 1px solid #fff;
     border-radius: 1.5rem;
     background-color: #5f4dee;
     color: #fff;
@@ -418,8 +418,8 @@ input[type='checkbox'] {
 }
 
 .logout-button:hover {
-    background-color: transparent;
-    color: #fff;
+    background-color: #fff;
+    color: #5f4dee;
 }
 
 /* Form Success And Error Message Formatting */
@@ -716,7 +716,7 @@ input[type='checkbox'] {
 .navbar-custom .nav-item .nav-link {
     padding: 0.625rem 0.75rem 0.625rem 0.75rem;
     color: #f7f5f5;
-    opacity: 0.7;
+    opacity: 0.8;
     text-decoration: none;
     transition: all 0.2s ease;
 }
@@ -816,6 +816,25 @@ input[type='checkbox'] {
     margin-right: 0.125rem;
 }
 
+.fa-1x {
+    font-size: 1.5rem;
+}
+.navbar-toggler .toggler-example {
+    cursor: pointer;
+}
+.dark-blue-text {
+    color: #0A38F5;
+}
+.dark-pink-text {
+    color: #AC003A;
+}
+.dark-amber-text {
+    color: #ff6f00;
+}
+.dark-teal-text {
+    color: #004d40;
+}
+
 
 /*********************/
 /*    04. Header     */
@@ -847,17 +866,20 @@ input[type='checkbox'] {
 }
 
 .header .btn-solid-lg {
-    margin-right: 0.5rem;
-    margin-bottom: 1.125rem;
-    margin-left: 0.5rem;
-    border-color: #f3f7fd;
-    background-color: #f3f7fd;
-    color: #5f4dee;
+    display: inline-block;
+    padding: 1.375rem 2.625rem 1.375rem 2.625rem;
+    border: 0.125rem solid #f3f7fd;
+    border-radius: 2rem;
+    background-color: #5f4dee;
+    color: #fff;
+    font: 700 0.875rem/0 "Open Sans", sans-serif;
+    text-decoration: none;
+    transition: all 0.2s;
 }
 
 .header .btn-solid-lg:hover {
-    background: transparent;
-    color: #f3f7fd;
+    background-color: #fff;
+    color: #5f4dee;
 }
 
 .header .btn-outline-lg {

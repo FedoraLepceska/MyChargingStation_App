@@ -63,7 +63,7 @@ public class HomeController {
             }
             model.addAttribute("reservations", reservations);
 
-            if(user.getRole() == Role.ROLE_ADMIN){
+            if(user.getRole() == Role.ROLE_USER){
                 List<MCSUser> users = userService.listAll();
                 model.addAttribute("users", users);
             }
